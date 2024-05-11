@@ -1,0 +1,19 @@
+
+<%=turbo_frame_tag "photos" do%>
+  <div id="photos">
+    <% person.photos.each do |img|%>
+      <div id="photo_<%=img.id%>">
+        <%= image_tag(img, width:"10%", height: "10%") %>
+        <a href="<%=remover_person_path(img.id)%>"
+          data-turbo-method="get"
+          data-turbo-confirm="Confirma a exclusão do anexo ?"
+           title="Remover">Remover
+            </a>
+            |
+            <%= link_to rails_blob_path(img, disposition: 'attachment'), class:"btn btn btn-xs btn-success" do %>
+              <i class="fa fa-download"></i> Download
+            <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

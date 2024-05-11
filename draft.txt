@@ -1,0 +1,4 @@
+ Add Fotos via Linha de comando
+ ==============================
+ p = Person.first
+ p.photos.attach(io: File.open('/Users/aecj/tmp/img1.jpeg'), filename: 'image12.jpeg')
