@@ -58,13 +58,15 @@ class PeopleController < ApplicationController
   end
 
   def remover
-    #byebug
     begin
       @person = Person.find(ActiveStorage::Attachment.find(params[:id]).record_id)
       ActiveStorage::Attachment.find(params[:id]).purge
-
+      @img_id = params[:id]
       respond_to do |format|
-        format.html #{ redirect_to people_url, notice: "Photo was successfully destroyed." }
+        # format.html #{ redirect_to people_url, notice: "Photo was successfully destroyed." }
+        #format.turbo_stream { render turbo_stream: turbo_stream.remove("photo_#{params[:id]}", partial: 'photos', locals: { person: @person }) }
+        format.turbo_stream
+        #format.html
       end
     end
   end

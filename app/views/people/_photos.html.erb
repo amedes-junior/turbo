@@ -6,6 +6,7 @@
         <%= image_tag(img, width:"10%", height: "10%") %>
         <a href="<%=remover_person_path(img.id)%>"
           data-turbo-method="get"
+          data-turbo-stream= true
           data-turbo-confirm="Confirma a exclusão do anexo ?"
            title="Remover">Remover
             </a>
